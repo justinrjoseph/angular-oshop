@@ -1,0 +1,88 @@
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="form-control"
+      [(ngModel)]="shipping.name"
+      #name="ngModel"
+      required>
+
+    <div
+      *ngIf="name.touched && name.invalid"
+      class="alert alert-danger">
+      <div *ngIf="name.errors.required">Name is required.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="addressLine1">Address</label>
+
+    <input
+      type="text"  
+      name="addressLine1"
+      id="addressLine1"
+      class="form-control"
+      [(ngModel)]="shipping.addressLine1"
+      #addressLine1="ngModel"
+      placeholder="Line 1" 
+      required>
+
+    <div
+      *ngIf="addressLine1.touched && addressLine1.invalid"
+      class="alert alert-danger">
+      <div *ngIf="addressLine1.errors.required">
+        Address Line 1 is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="addressLine">Line 2</label>
+
+    <input
+      type="text"  
+      name="addressLine2"
+      id="addressLine2"
+      [(ngModel)]="shipping.addressLine2"
+      class="form-control"
+      #addressLine2="ngModel"
+      placeholder="Line 2"
+      required>
+
+    <div
+      *ngIf="addressLine2.touched && addressLine2.invalid"
+      class="alert alert-danger">
+      <div *ngIf="addressLine2.errors.required">
+        Address Line 2 is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="city">City</label>
+
+    <input
+      type="text"  
+      name="city"
+      class="form-control"
+      [(ngModel)]="shipping.city"
+      #city="ngModel"
+      required>
+
+    <div
+      *ngIf="city.touched && city.invalid"
+      class="alert alert-danger">
+      <div *ngIf="city.errors.required">City is required.</div>
+    </div>
+  </div>
+
+  <button 
+    class="btn btn-primary"
+    (click)="placeOrder()"
+    [disabled]="f.invalid">
+    Place Order
+  </button>
+</form>
